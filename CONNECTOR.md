@@ -5,7 +5,7 @@ in Melo on iPhone. Search your saved vocabulary or remove words you no longer ne
 
 ## Before connecting
 
-Install [Melo for iOS](https://apps.apple.com/app/id6760539346) and sign in with
+Install [Melo for iOS](https://apps.apple.com/us/app/melo-words-from-ai-chats/id6760539346) and sign in with
 Apple. Demo mode has no personal vocabulary connection. In Melo settings, copy
 your personal MCP URL. Keep it private: it grants access to your vocabulary.
 
@@ -75,5 +75,5 @@ Only include information needed for the vocabulary entry.
 Read [Melo's privacy policy](https://azuic.github.io/melo-privacy/). Vocabulary and OAuth records
 are processed by Cloudflare, and your connected AI service receives tool results.
 
-Support and privacy: **hi@zui.ooo**. Developer: [azuic](https://github.com/azuic).
+Support and privacy: **hi@zui.ooo**. [Melo on the App Store](https://apps.apple.com/us/app/melo-words-from-ai-chats/id6760539346).
 
