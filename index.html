@@ -210,72 +210,22 @@
 
     <div class="hero-eyebrow">Legal</div>
     <h1 class="hero-title">Privacy Policy</h1>
-    <p class="hero-date">Effective date: March 17, 2026</p>
+    <p class="hero-date">Effective date: October 21, 2026</p>
     <div class="rule"></div>
-
-    <section>
-      <p>Melo is a vocabulary app built by one person. This policy explains what data the app collects, how it is stored, and what you can do with it. It is written to be read, not to bury things.</p>
-    </section>
-
-    <section>
-      <h2>What we collect</h2>
-      <p>Melo collects only what it needs to work:</p>
-      <ul>
-        <li>An anonymous user identifier from Sign in with Apple</li>
-        <li>A randomly generated Melo token tied to your account</li>
-        <li>Vocabulary words you save during AI conversations — including the word, its meaning, IPA pronunciation, example sentences, and language</li>
-      </ul>
-      <p>We do not collect your name, email address, or any other personal information. Sign in with Apple is used precisely because it lets you authenticate without sharing identity details.</p>
-    </section>
-
-    <section>
-      <h2>How your data is stored</h2>
-      <p>Your vocabulary list is stored in Cloudflare KV, a cloud key-value store, keyed to your personal Melo token. The token is cryptographically random and unguessable. No one else can access your vocab list without knowing your token.</p>
-      <div class="info-card">
-        <div class="info-label">Storage provider</div>
-        <p>Cloudflare, Inc. — infrastructure only. Cloudflare does not have access to your data in any meaningful sense and does not process it for advertising or analytics.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>How your data is used</h2>
-      <p>Your vocabulary data is used for one purpose: displaying your saved words in the Melo app as flashcards and a browsable archive. That is it.</p>
-      <p>Your data is never sold, shared with third parties, used for advertising, or used to train AI models.</p>
-    </section>
-
-    <section>
-      <h2>AI integrations</h2>
-      <p>Melo connects to Claude via a Model Context Protocol (MCP) link. When you use this integration, words are saved to your Melo account by the AI during your conversations. Melo does not have any access to the content of your conversations — only the vocabulary entries the AI chooses to save.</p>
-      <p>Your conversation data stays between you and Anthropic. Refer to their privacy policy for how conversation data is handled on their end.</p>
-    </section>
-
-    <section>
-      <h2>Your rights</h2>
-      <p>You can do the following at any time:</p>
-      <ul>
-        <li>Delete individual words from your vocab list inside the app</li>
-        <li>Delete your entire account and all associated data by contacting us</li>
-        <li>Regenerate your Melo token, which invalidates the old one and migrates your data</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Children</h2>
-      <p>Melo is not directed at children under 13 and does not knowingly collect data from them.</p>
-    </section>
-
-    <section>
-      <h2>Changes to this policy</h2>
-      <p>If this policy changes in a meaningful way, the effective date at the top will be updated. For significant changes, a notice will appear in the app.</p>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
-      <p>Questions about this policy or requests to delete your data:</p>
-      <div class="contact-block">
-        <p>Email: <a href="mailto:hi@zui.ooo">hi@zui.ooo</a></p>
-      </div>
-    </section>
+    <section><p>Melo stores vocabulary you choose to learn and makes it available in the iOS app and through AI clients you connect. This policy covers the app and Melo's remote Model Context Protocol (MCP) server.</p></section>
+<section><h2>Information Melo stores</h2><p><strong>Account identifier and connection credentials.</strong> The iOS app uses the stable identifier returned by Sign in with Apple as the Melo account token. This is an Apple-provided identifier, not a separately generated or hashed Melo token. The app requests no name or email scopes and does not receive your Apple password. The account token is stored in the device's Keychain and identifies the vocabulary list in the backend. Treat your personal MCP URL as a secret: anyone who has it can read or change that list.</p>
+<p><strong>Vocabulary.</strong> Entries can include a word or expression, meaning, language, pronunciation, part of speech, grammatical gender, feminine form, example sentences and translations, inflections, and a date. These fields can include text from your conversation if you ask your AI client to save it. Avoid saving personal or sensitive information in vocabulary entries or examples.</p>
+<p><strong>OAuth connection records.</strong> When you connect an AI client, Melo stores its registered client ID, callback URLs and optional client name, short-lived authorization codes, and access-token records associated with your Melo token.</p></section>
+<section><h2>How Melo uses and stores information</h2><p>Melo uses these records to authorize connections, save and retrieve vocabulary, search it, sync it to your device, and perform requested updates or deletions. Cloudflare Workers processes requests and Cloudflare KV stores vocabulary and OAuth records. The iOS app also caches vocabulary in UserDefaults for offline access. Signing out preserves that cache.</p>
+<p>Melo has no advertising or third-party analytics SDKs. The Worker does not intentionally record MCP request bodies, vocabulary, or credentials in application logs, and its Worker invocation logging is disabled. Cloudflare may process network and operational information as the infrastructure provider.</p></section>
+<section><h2>Connected AI clients and service providers</h2><p>Cloudflare processes and stores information to operate Melo. An AI service you connect, such as Claude by Anthropic, sends tool arguments to Melo and receives tool results. Those results can include your saved vocabulary. The AI service handles its own conversation and connection data under its own policies.</p>
+<p>Melo does not receive an entire chat transcript, Claude memory, or chat history through its connector. It receives the tool requests the connected client sends. Melo does not sell vocabulary or use it for advertising or model training.</p></section>
+<section><h2>Retention and deletion</h2><p>Vocabulary stays in Cloudflare KV until it is deleted. You can delete individual words in the app or through a connected client. The app's Delete Account action and the <code>delete_account</code> tool remove the account's stored vocabulary; the app also clears its local vocabulary cache when that action is used there. Backend changes may take time to propagate through Cloudflare KV and to devices until they sync.</p>
+<p>Authorization codes expire after five minutes. OAuth access-token records expire after one year. Client registration records currently have no automatic expiry. Deleting vocabulary does not automatically remove OAuth registration or access records, revoke existing access tokens, or invalidate the Apple-provided account token. A connected client can save new words after vocabulary deletion. Removing the connector from an AI client stops its use there; Melo does not currently provide in-app account-token rotation or an OAuth revocation endpoint.</p>
+<p>For assistance deleting remaining connection records, contact hi@zui.ooo. Do not email your account token or personal MCP URL.</p></section>
+<section><h2>Children</h2><p>Melo is not directed at children under 13. Melo does not knowingly collect their information.</p></section>
+<section><h2>Changes and contact</h2><p>Updates are published with a new effective date. For privacy questions, support, or deletion requests, email <strong>hi@zui.ooo</strong>.</p>
+<p>Developer profile: <a href="https://github.com/azuic">azuic on GitHub</a>.</p></section>
 
     <footer>
       <p>© 2026 Melo.</p>
