@@ -72,6 +72,8 @@ Only include information needed for the vocabulary entry.
 
 ## Privacy and support
 
+Read [Melo’s terms of use](https://azuic.github.io/melo-privacy/terms.html).
+
 Read [Melo's privacy policy](https://azuic.github.io/melo-privacy/). Vocabulary and OAuth records
 are processed by Cloudflare, and your connected AI service receives tool results.
 
